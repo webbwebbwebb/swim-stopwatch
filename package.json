@@ -1,0 +1,77 @@
+{
+    "author": "travipross",
+    "dependencies": {},
+    "keywords": [],
+    "name": "track-stopwatch",
+    "pebble": {
+        "capabilities": [
+            "configurable"
+        ],
+        "displayName": "Track Stopwatch",
+        "enableMultiJS": true,
+        "messageKeys": {
+            "AppKeyColorAccent": 4,
+            "AppKeyColorMain": 3,
+            "AppKeyDispMode": 2,
+            "AppKeyDistUnit": 0,
+            "AppKeyLapDist": 1
+        },
+        "projectType": "native",
+        "resources": {
+            "media": [
+                {
+                    "file": "images/app_icon.png",
+                    "name": "IMAGE_MENU_ICON",
+                    "targetPlatforms": null,
+                    "type": "bitmap"
+                },
+                {
+                    "file": "images/action_icon_reset.png",
+                    "name": "IMAGE_ACTION_ICON_RESET",
+                    "targetPlatforms": null,
+                    "type": "bitmap"
+                },
+                {
+                    "file": "images/action_icon_pause.png",
+                    "name": "IMAGE_ACTION_ICON_PAUSE",
+                    "targetPlatforms": null,
+                    "type": "bitmap"
+                },
+                {
+                    "file": "images/action_icon_play.png",
+                    "name": "IMAGE_ACTION_ICON_PLAY",
+                    "targetPlatforms": null,
+                    "type": "bitmap"
+                },
+                {
+                    "file": "images/action_icon_finish",
+                    "name": "IMAGE_ACTION_ICON_FINISH",
+                    "targetPlatforms": null,
+                    "type": "bitmap"
+                },
+                {
+                    "file": "images/action_icon_play_pause.png",
+                    "name": "IMAGE_ACTION_ICON_PLAY_PAUSE",
+                    "targetPlatforms": null,
+                    "type": "bitmap"
+                },
+                {
+                    "file": "images/action_icon_increment.png",
+                    "name": "IMAGE_ACTION_ICON_INCREMENT",
+                    "targetPlatforms": null,
+                    "type": "bitmap"
+                }
+            ]
+        },
+        "sdkVersion": "3",
+        "targetPlatforms": [
+            "aplite",
+            "basalt"
+        ],
+        "uuid": "ee0b1bef-9f3f-4e00-9dd6-ad6dcc667ece",
+        "watchapp": {
+            "watchface": false
+        }
+    },
+    "version": "1.1.0"
+}

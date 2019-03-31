@@ -119,11 +119,26 @@ static void toggle_click_handler(ClickRecognizerRef recognizer, void *context){
   update_action_bar();
 }
 
+static void back_click_handler(ClickRecognizerRef recognizer, void*context) {
+  if(!config.back_button_long_press || (!state.started || state.paused)) {
+    // go back
+    window_stack_pop(false);
+  }
+}
+
+static void back_long_click_handler(ClickRecognizerRef recognizer, void*context) {
+  if(config.back_button_long_press && state.started && !state.paused) {
+    window_stack_pop(false);
+  }
+}
+
 // assigns callbacks to each button click type
 static void click_config_provider(void *context) {
   window_single_click_subscribe(BUTTON_ID_UP, (ClickHandler) up_click_handler);
   window_single_click_subscribe(BUTTON_ID_DOWN, (ClickHandler) down_click_handler);
   window_long_click_subscribe(BUTTON_ID_SELECT,0, (ClickHandler)toggle_click_handler,NULL);
+  window_single_click_subscribe(BUTTON_ID_BACK, (ClickHandler)back_click_handler);
+  window_long_click_subscribe(BUTTON_ID_BACK,0, (ClickHandler)back_long_click_handler,NULL);
   window_single_click_subscribe(BUTTON_ID_SELECT,(ClickHandler)select_click_handler);
 }
 

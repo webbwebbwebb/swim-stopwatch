@@ -29,7 +29,8 @@ Pebble.addEventListener('webviewclosed', function(e) {
     'AppKeyLapDist': parseInt(configData.AppKeyLapDist),
     'AppKeyDispMode': parseInt(configData.AppKeyDispMode),
     'AppKeyColorMain' : parseInt(configData.AppKeyColorMain,16),
-    'AppKeyColorAccent' : parseInt(configData.AppKeyColorAccent,16)
+    'AppKeyColorAccent' : parseInt(configData.AppKeyColorAccent,16),
+    'AppKeyBackButtonLongPress' : parseInt(configData.AppKeyBackButtonLongPress),
   };
   
   // Send dictionary to the watchapp

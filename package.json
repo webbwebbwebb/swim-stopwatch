@@ -10,6 +10,7 @@
         "displayName": "Track Stopwatch",
         "enableMultiJS": true,
         "messageKeys": {
+            "AppKeyBackButtonLongPress": 5,
             "AppKeyColorAccent": 4,
             "AppKeyColorMain": 3,
             "AppKeyDispMode": 2,

@@ -54,6 +54,13 @@
 			<input id="color_bow" name="bw_color" type="radio" value=0 checked> Black on white <br>
 			<input id="color_wob" name="bw_color" type="radio" value=1 > White on black <br>
 		</fieldset>
+
+		<fieldset id="back_button_behavior_fieldset">
+			<legend>Long press to go back <br> (while stopwatch is running)</legend>
+			<input id="back_button_long_press_on" name="back_button_long_press" type="radio" value=1> Yes <br>
+			<input id="back_button_long_press_off" name="back_button_long_press" type="radio" value=0 checked> No <br>
+		</fieldset>
+
 		<input id="submit_button" type="button" value="Save" style="float:left;width:100px;height:50px">
   </body>
   <script>	
@@ -110,8 +117,15 @@
 		}else{
 			console.log("No screen type detected!");
 		}
-		
-		
+		// load back button behavior
+		if(localStorage["AppKeyBackButtonLongPress"]){
+			console.log("load AppKeyBackButtonLongPress: " + localStorage["AppKeyBackButtonLongPress"]);
+			if(localStorage["AppKeyBackButtonLongPress"]==1){
+				document.getElementById("back_button_long_press_on").checked = true;
+			}else{
+				document.getElementById("back_button_long_press_off").checked = true;
+			}
+		}
 	}
 	function convertToNearest64BitHex(hexInput){// assumes 6-length hex value with leading hash
 		var outputString = "#";
@@ -144,7 +158,8 @@
 		var dispMode = document.getElementsByName("disp_mode");
 		var mainColor = document.getElementById("main_color");
 		var accentColor = document.getElementById("accent_color");
-		
+		var accentColor = document.getElementById("accent_color");
+		var backButtonLongPress = document.getElementsByName("back_button_long_press");
 
 		// Make a data object to be sent, coercing value types to integers
 		var options = {
@@ -152,7 +167,8 @@
 		  "AppKeyLapDist": lapDist.value,
 		  "AppKeyDispMode": 0,
 		  "AppKeyColorMain": convertToNearest64BitHex(mainColor.value),
-		  "AppKeyColorAccent": convertToNearest64BitHex(accentColor.value)
+		  "AppKeyColorAccent": convertToNearest64BitHex(accentColor.value),
+		  "AppKeyBackButtonLongPress": 0
 		};
 		
 		// store the colors in the case of bw watch config screen
@@ -180,7 +196,13 @@
 				break;
 			}
 		}
-		
+		for(var i = 0; i<backButtonLongPress.length; i++){
+			if(backButtonLongPress[i].checked){
+				options.AppKeyBackButtonLongPress = backButtonLongPress[i].value;
+				break;
+			}
+		}
+
 		// put in local storage
 		localStorage["AppKeyDistUnit"] = options.AppKeyDistUnit;
 		console.log("saved AppKeyDistUnit: " + options.AppKeyDistUnit);
@@ -196,6 +218,9 @@
 		
 		localStorage["AppKeyColorAccent"] = options.AppKeyColorAccent;
 		console.log("saved AppKeyColorAccent: " + options.AppKeyColorAccent);
+
+		localStorage["AppKeyBackButtonLongPress"] = options.AppKeyBackButtonLongPress;
+		console.log("saved AppKeyBackButtonLongPress: " + options.AppKeyBackButtonLongPress);
 
 		// Determine the correct return URL (emulator vs real watch)
 		function getQueryParam(variable, defaultValue) {

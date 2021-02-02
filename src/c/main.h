@@ -11,6 +11,7 @@ typedef struct{
   int disp_mode;
   int main_color;
   int accent_color;
+  bool back_button_long_press;
 } AppConfig;
 
 // define structure used for persistently storing state of timer

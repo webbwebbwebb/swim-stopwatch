@@ -20,7 +20,8 @@ typedef enum {
   AppKeyLapDist,
   AppKeyDispMode,
   AppKeyColorMain,
-  AppKeyColorAccent
+  AppKeyColorAccent,
+  AppKeyBackButtonLongPress
 } AppKey;
 
 // store app settings in persistent storage
@@ -58,6 +59,11 @@ static void inbox_received_handler(DictionaryIterator *iter, void *context) {
     config.accent_color = accent_color->value->int32;
     APP_LOG(APP_LOG_LEVEL_INFO,"accent_color = %06x",config.accent_color);
   }
+  Tuple *back_button_long_press = dict_find(iter, AppKeyBackButtonLongPress);
+  if(back_button_long_press) {
+    config.back_button_long_press = back_button_long_press->value->int32 > 0;
+    APP_LOG(APP_LOG_LEVEL_INFO,"back_button_long_press = %u",config.back_button_long_press);
+  }
 
   // App should now update to take the user's preferences into account
   store_config();
@@ -68,7 +74,7 @@ static void inbox_received_handler(DictionaryIterator *iter, void *context) {
 static void init(void) {  
   // Register to be notified about inbox received events
   app_message_register_inbox_received((AppMessageInboxReceived) inbox_received_handler);
-  app_message_open(64, 64);
+  app_message_open(64,64);
   
   // if timer state exists in persistent storage, load; otherwise, initialize with defaults
   // Since the run timer uses epoch time, it can run "in the background" without losing time
@@ -98,7 +104,8 @@ static void init(void) {
       .disp_mode = 0,
       .lap_dist = 162,
       .main_color = 0xFFFFFF,
-      .accent_color = 0x000000
+      .accent_color = 0x000000,
+      .back_button_long_press = false
     };
   }
   

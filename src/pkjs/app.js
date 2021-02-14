@@ -8,9 +8,9 @@ Pebble.addEventListener('showConfiguration', function() {
   var url;
   console.log(Pebble.getActiveWatchInfo().platform);
   if(Pebble.getActiveWatchInfo().platform === "basalt"){
-    url = 'http://webbwebbwebb.github.com/swim-stopwatch/config/?color'; // settings with color
+    url = 'https://raw.githack.com/webbwebbwebb/swim-stopwatch/master/config/?color'; // settings with color
   }else{
-    url = 'http://webbwebbwebb.github.com/swim-stopwatch/config/?bw';
+    url = 'https://raw.githack.com/webbwebbwebb/swim-stopwatch/master/config/?bw';
   }
   console.log(url);
   Pebble.openURL(url);

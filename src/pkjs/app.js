@@ -8,11 +8,9 @@ Pebble.addEventListener('showConfiguration', function() {
   var url;
   console.log(Pebble.getActiveWatchInfo().platform);
   if(Pebble.getActiveWatchInfo().platform === "basalt"){
-    // url = 'http://travipross.ddns.net:8000/~travisprosser/track_stopwatch_settings.html?color'; // settings with color
-    url = 'http://travipross.github.io/trackStopwatch/?color'; // settings with color
+    url = 'http://webbwebbwebb.github.com/swim-stopwatch/?color'; // settings with color
   }else{
-    // url = 'http://travipross.ddns.net:8000/~travisprosser/track_stopwatch_settings.html?bw';
-    url = 'http://travipross.github.io/trackStopwatch/?bw';
+    url = 'http://webbwebbwebb.github.com/swim-stopwatch/?bw';
   }
   console.log(url);
   Pebble.openURL(url);
